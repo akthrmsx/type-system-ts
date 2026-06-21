@@ -9,16 +9,16 @@ pub enum Tm {
     True,
     False,
     If {
-        condition: Box<Tm>,
-        consequent: Box<Tm>,
-        alternative: Box<Tm>,
+        condition: Box<Self>,
+        consequent: Box<Self>,
+        alternative: Box<Self>,
     },
     Number {
         value: usize,
     },
     Add {
-        left: Box<Tm>,
-        right: Box<Tm>,
+        left: Box<Self>,
+        right: Box<Self>,
     },
 }
 
@@ -29,7 +29,7 @@ pub struct Error {
 
 impl From<&str> for Error {
     fn from(message: &str) -> Self {
-        Error {
+        Self {
             message: message.into(),
         }
     }
